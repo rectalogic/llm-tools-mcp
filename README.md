@@ -18,21 +18,28 @@ llm install llm-tools-mcp
 To use this with the [LLM command-line tool](https://llm.datasette.io/en/stable/usage.html):
 
 ```bash
-$ echo "The magic word is frumble" > /tmp/magic.txt
-$ uv run llm --tool 'MCP(command="npx", args=["-y", "@modelcontextprotocol/server-filesystem", "/tmp"])' "What is the magic word in the file magic.txt?" --tools-debug
+$ echo "The magic word is frumble" > magic.txt
+$ uv run llm --tool 'MCP(command="npx", args=["-y", "@modelcontextprotocol/server-filesystem", "."])' "What is the magic word in the file ./magic.txt?" --tools-debug
+Secure MCP Filesystem Server running on stdio
+Allowed directories: [ '/Users/aw/Projects/rectalogic/llm-tools-mcp' ]
+
+Tool call: read_file({'path': './magic.txt'})
+  "CallToolResult(meta=None, content=[TextContent(type='text', text='The magic word is frumble\\n', annotations=None)], isError=False)"
+
+The magic word in the file `magic.txt` is **frumble**.
 ```
 
 With the [LLM Python API](https://llm.datasette.io/en/stable/python-api.html):
 
 ```python
 import llm
-from llm_tools_mcp import example_hello
+from llm_tools_mcp import MCP
 
 model = llm.get_model("gpt-4.1-mini")
 
 result = model.chain(
     "Example prompt goes here",
-    tools=[example_hello]
+    tools=[MCP(command="npx", args=["-y", "@modelcontextprotocol/server-filesystem", "."])]
 ).text()
 ```
 
