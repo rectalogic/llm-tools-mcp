@@ -18,7 +18,8 @@ llm install llm-tools-mcp
 To use this with the [LLM command-line tool](https://llm.datasette.io/en/stable/usage.html):
 
 ```bash
-llm --tool example_hello "Example prompt goes here" --tools-debug
+$ echo "The magic word is frumble" > /tmp/magic.txt
+$ uv run llm --tool 'MCP(command="npx", args=["-y", "@modelcontextprotocol/server-filesystem", "/tmp"])' "What is the magic word in the file magic.txt?" --tools-debug
 ```
 
 With the [LLM Python API](https://llm.datasette.io/en/stable/python-api.html):

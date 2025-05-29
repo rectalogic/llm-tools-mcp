@@ -3,17 +3,20 @@ name = "llm-tools-mcp"
 version = "0.1"
 description = "MCP tools support"
 readme = "README.md"
-authors = [{name = "Andrew Wason"}]
+authors = [{ name = "Andrew Wason" }]
 license = "Apache-2.0"
 classifiers = []
-requires-python = ">=3.9"
-dependencies = [
-    "llm>=0.26"
-]
+requires-python = ">=3.11"
+dependencies = ["llm>=0.26", "mcp>=1.9.1"]
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.12",
+]
 
 [project.urls]
 Homepage = "https://github.com/rectalogic/llm-tools-mcp"
