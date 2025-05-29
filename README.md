@@ -7,12 +7,6 @@
 
 MCP tools support
 
-## Installation
-
-Install this plugin in the same environment as [LLM](https://llm.datasette.io/).
-```bash
-llm install llm-tools-mcp
-```
 ## Usage
 
 To use this with the [LLM command-line tool](https://llm.datasette.io/en/stable/usage.html):
