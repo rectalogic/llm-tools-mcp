@@ -10,13 +10,11 @@ requires-python = ">=3.11"
 dependencies = ["llm>=0.26", "mcp>=1.9.1"]
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [dependency-groups]
-dev = [
-    "ruff>=0.11.12",
-]
+dev = ["llm-echo>=0.3a3", "pytest>=8.3.5", "ruff>=0.11.12"]
 
 [project.urls]
 Homepage = "https://github.com/rectalogic/llm-tools-mcp"
@@ -27,5 +25,35 @@ CI = "https://github.com/rectalogic/llm-tools-mcp/actions"
 [project.entry-points.llm]
 llm_tools_mcp = "llm_tools_mcp"
 
-[project.optional-dependencies]
-test = ["pytest", "llm-echo>=0.3a1"]
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = [
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I",
+    # flake8-no-pep420
+    "INP",
+    # pyupgrade
+    "UP",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "INP001"]

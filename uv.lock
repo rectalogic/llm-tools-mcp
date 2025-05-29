@@ -255,28 +255,25 @@ dependencies = [
     { name = "mcp" },
 ]
 
-[package.optional-dependencies]
-test = [
-    { name = "llm-echo" },
-    { name = "pytest" },
-]
-
 [package.dev-dependencies]
 dev = [
+    { name = "llm-echo" },
+    { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "llm", specifier = ">=0.26" },
-    { name = "llm-echo", marker = "extra == 'test'", specifier = ">=0.3a1" },
     { name = "mcp", specifier = ">=1.9.1" },
-    { name = "pytest", marker = "extra == 'test'" },
 ]
-provides-extras = ["test"]
 
 [package.metadata.requires-dev]
-dev = [{ name = "ruff", specifier = ">=0.11.12" }]
+dev = [
+    { name = "llm-echo", specifier = ">=0.3a3" },
+    { name = "pytest", specifier = ">=8.3.5" },
+    { name = "ruff", specifier = ">=0.11.12" },
+]
 
 [[package]]
 name = "mcp"
